@@ -1,12 +1,19 @@
 {
+    "version": 2,
     "builds": [
       {
         "src": "package.json",
         "use": "@vercel/node"
       }
     ],
-    "env": {
-      "PYTHON_VERSION": "3.12.5"
-    }
+    "builds": [
+      {
+        "src": "path/to/your/build",
+        "use": "@vercel/node",
+        "config": {
+          "includeFiles": ["path/to/python/bin"]
+        }
+      }
+    ]
   }
   
