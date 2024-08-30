@@ -1,0 +1,22 @@
+# Ignore node_modules directory
+node_modules/
+
+# Ignore build artifacts
+build/
+
+# Ignore configuration files that are not needed in production
+*.log
+*.env
+*.gitignore
+*.npmrc
+*.yarnrc
+
+# Ignore documentation
+docs/
+
+# Ignore specific files
+README.md
+LICENSE
+
+# Ignore backend code (if not needed in the frontend deployment)
+backend/
