@@ -3,10 +3,7 @@
     "builds": [
       {
         "src": "package.json",
-        "use": "@vercel/node",
-        "config": {
-          "includeFiles": ["path/to/python/bin"]
-        }
+        "use": "@vercel/node"
       }
     ],
     "routes": [
@@ -27,8 +24,7 @@
     "build": {
       "env": {
         "CUSTOM_BUILD_VAR": "value"
-      },
-      "public": "public"
+      }
     },
     "cleanUrls": true,
     "trailingSlash": false
