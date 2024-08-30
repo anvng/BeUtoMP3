@@ -1,0 +1,12 @@
+exclude:
+  - node_modules
+  - vendor
+  - package-lock.json
+  - package.json
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - CHANGELOG.md
+  - CNAME
+  - .github
