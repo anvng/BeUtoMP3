@@ -2,17 +2,14 @@
     "version": 2,
     "builds": [
       {
-        "src": "package.json",
-        "use": "@vercel/node"
+        "src": "Dockerfile",
+        "use": "@vercel/docker"
       }
     ],
-    "builds": [
+    "routes": [
       {
-        "src": "path/to/your/build",
-        "use": "@vercel/node",
-        "config": {
-          "includeFiles": ["path/to/python/bin"]
-        }
+        "src": "/(.*)",
+        "dest": "/$1"
       }
     ]
   }

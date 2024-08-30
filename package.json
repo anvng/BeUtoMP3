@@ -4,8 +4,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prebuild": "apt-get update && apt-get install -y python3",
-    "build": "your-build-command"
+    "prebuild": "npm install -g bin-version-check-cli",
+    "build": "npm run build"
   },
   "keywords": [],
   "author": "anvndev",
