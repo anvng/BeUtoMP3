@@ -19,7 +19,6 @@
         "dest": "/public/$1"
       }
     ],
-    "outputDirectory": "public",
     "env": {
       "NODE_ENV": "production",
       "DATABASE_URL": "@database-url",
@@ -29,7 +28,6 @@
       "env": {
         "CUSTOM_BUILD_VAR": "value"
       },
-      "outputDirectory": "build",
       "public": "public"
     },
     "cleanUrls": true,
