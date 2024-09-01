@@ -1,16 +1,10 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "anvndev",
-  "license": "ISC",
-  "description": "YouTube to MP3 Converter by Anvndev",
-  "devDependencies": {
-    "nodemon": "^3.1.4"
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "dependencies": {
     "body-parser": "^1.20.2",
@@ -18,5 +12,11 @@
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "yt-dlp-exec": "^1.0.2"
-  }
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  },
+  "description": "YouTube to MP3 Converter by Anvndev",
+  "author": "anvndev",
+  "license": "ISC"
 }

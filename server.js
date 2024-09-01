@@ -8,7 +8,7 @@ const fs = require('fs');
 const app = express();
 const port = process.env.PORT || 3001;
 
-// CORS configuration: Update origin if needed for deployment
+// CORS configuration
 app.use(cors({
     origin: '*', // Adjust this to the allowed origin(s) if deploying publicly
 }));
@@ -22,6 +22,7 @@ if (!fs.existsSync(downloadsDir)) {
     fs.mkdirSync(downloadsDir);
 }
 
+// Define a route for converting YouTube to MP3
 app.post('/convert', (req, res) => {
     const youtubeLink = req.body.link;
 
@@ -29,10 +30,11 @@ app.post('/convert', (req, res) => {
         return res.status(400).json({ message: 'YouTube link is required' });
     }
 
-    // Handle the output path to avoid file name issues
+    // Generate a unique output file name
     const outputPath = path.join(downloadsDir, '%(title)s.%(ext)s');
     const command = `yt-dlp "${youtubeLink}" --extract-audio --audio-format mp3 --output "${outputPath}"`;
 
+    // Execute the command
     exec(command, (error, stdout, stderr) => {
         if (error) {
             console.error('Error:', error);
@@ -43,17 +45,24 @@ app.post('/convert', (req, res) => {
             return res.status(500).json({ message: 'Conversion failed', details: stderr });
         }
 
-        // Extract the file name from the output if possible
-        // Adjust this if yt-dlp provides the filename in stdout or use a known pattern
-        const fileName = 'example.mp3'; // You'll need to dynamically determine this
+        // Extract the file name from stdout or define a pattern to identify the correct file
+        const fileNameMatch = stdout.match(/Destination: (.+)/);
+        const fileName = fileNameMatch ? path.basename(fileNameMatch[1].trim()) : 'unknown.mp3';
         const fileUrl = `http://${req.headers.host}/downloads/${fileName}`;
         
         res.status(200).json({ message: 'Conversion successful!', file: fileUrl });
     });
 });
 
+// Serve the downloaded files
 app.use('/downloads', express.static(downloadsDir));
 
+// Add a route for the home page
+app.get('/', (req, res) => {
+    res.send('Welcome to the YouTube to MP3 Converter API!');
+});
+
+// Start the server
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
