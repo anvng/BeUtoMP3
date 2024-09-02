@@ -1,11 +1,9 @@
-# Use the official Node.js image as a base image
-FROM node:20
+# Use an official Node.js image with Python 3 included
+FROM node:20-buster
 
-# Install Python 3
-RUN apt-get update && apt-get install -y python3 python3-pip
-
-# Create a symlink for Python 3 to be accessible as 'python'
-RUN ln -s /usr/bin/python3 /usr/bin/python
+# Install Python 3 and required packages
+RUN apt-get update && \
+    apt-get install -y python3 python3-pip
 
 # Set the working directory
 WORKDIR /app
@@ -13,14 +11,14 @@ WORKDIR /app
 # Copy package.json and package-lock.json
 COPY package*.json ./
 
-# Install dependencies
+# Install app dependencies
 RUN npm install
 
-# Copy the rest of the application code
+# Copy the app source code
 COPY . .
 
-# Expose the port your app runs on
+# Expose the port the app will run on
 EXPOSE 3001
 
-# Start the application
-CMD ["npm", "start"]
+# Start the app
+CMD ["node", "server.js"]
