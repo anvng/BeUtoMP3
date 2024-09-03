@@ -1,7 +1,10 @@
-_site/
-.sass-cache/
-.jekyll-cache/
-.jekyll-metadata
-.bundle/
-node_modules/
-.vercel
+.evn.local
+.evn.development.local
+.evn.test.local
+.evn.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+vercel.json
