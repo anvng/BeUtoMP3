@@ -5,8 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js",
-    "postinstall": "apt-get update && apt-get install -y python3 python3-pip"
+    "dev": "nodemon server.js"
 
   },
   "dependencies": {

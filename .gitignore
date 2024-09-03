@@ -2,6 +2,7 @@
 .evn.development.local
 .evn.test.local
 .evn.production.local
+node_modules/
 
 npm-debug.log*
 yarn-debug.log*
